@@ -2,7 +2,7 @@ import './App.css';
 import Search from "./components/search/search";
 import CurrentWeather from "./components/current-weather/current-weather";
 import {WEATHER_API_KEY, WEATHER_API_URL} from "./api";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Forecast from "./components/forecast/forecast";
 
 function App() {
@@ -27,10 +27,23 @@ function App() {
             .catch((err) => console.log(err));
     }
 
+    useEffect(() => {
+        const krakowData = {
+            value: "50.06143 19.93658",
+            label: "Kraków, PL"
+        };
+
+        handleOnSearchChange(krakowData);
+    }, []);
+
   return (
     <div className="container">
-        <Search onSearchChange={handleOnSearchChange}/>
-        {currentWeather && <CurrentWeather data={currentWeather}/>}
+        <div className="top">
+            <div className="containerTop">
+                <Search onSearchChange={handleOnSearchChange}/>
+                {currentWeather && <CurrentWeather data={currentWeather}/>}
+            </div>
+        </div>
         {forecast && <Forecast data={forecast} />}
     </div>
   );

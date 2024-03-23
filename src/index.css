@@ -3,6 +3,8 @@ body {
   font-family: "Roboto", Arial, serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: radial-gradient(circle, #00a8e8, #abc4ff);
+
 }
 
 code {
